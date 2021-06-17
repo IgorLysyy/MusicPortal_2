@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AddSound";
+}
+
+<h2>Add sound</h2>
+<hr />
+@using (Html.BeginForm("GetSoundInformation", "AddSound", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input type="file" name="fileUpload" value="Select a file" multiple />
+    <br />
+    <br />
+    <br />
+    <p>Выберите жанр</p>
+    @Html.DropDownList("idForSound", ViewBag.Genres as SelectList, new { multiple = "multiple",size = 10})
+
+    <br />
+    <br />
+    <input type="submit"  name="Submit" id="SubmitMultiply" class="btn btn-danger" value="Upload" />
+
+
+
+
+
+
+}

@@ -1,0 +1,30 @@
+﻿@model MusicPortal_2.Models.UserAccount
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+<hr />
+<div style="text-align:center;height:20%">
+
+
+    @using (Html.BeginForm("Profile", "User", FormMethod.Post, new { enctype = "multipart/form-data", style = "display:inline-block;float:left;margin:0;padding:0" }))
+    {
+
+        string path = "/Image/UserImage/" + Model.ImageName;
+
+        <img src=@path style="width:200px;height:120px;padding:0px;margin:0px" />
+        <input type="file" accept=".png,.jpeg,.JPG,.gif" name="upload" />
+        <br>
+        <input type="submit" value="Upload" />
+       <br />
+        @Html.ActionLink("Add sound", "Index", "AddSound", null)
+    }
+
+
+    <div style="display:inline-block;margin:0;padding:0">
+        <p>Name: @Model.Nickname </p>
+        <p>Email @Model.Email </p>
+    </div>
+
+</div>

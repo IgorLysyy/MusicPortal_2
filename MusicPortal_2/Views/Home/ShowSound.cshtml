@@ -1,0 +1,18 @@
+﻿@model MusicPortal_2.Models.Sound
+@{
+    ViewBag.Title = "ShowSound";
+}
+
+<h2>ShowSound</h2>
+<div style="text-align:center">
+    @{
+        string imgsrc = "/Image/SoundImage/" + Model.Image;
+
+    }
+    <img src=@imgsrc alt="Alternate Text" style="width:30%;height:30%" />
+    <h2> @Model.SoundName </h2>
+    <h4>  @Model.Album </h4>
+    <h4>  @Model.Author </h4>
+<pre> @Model.Lyrics </pre>
+
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MusicPortal_2.Models.Sound>
+@{
+    ViewBag.Title = "Home Page";
+}
+<table class="table">
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                using (Html.BeginForm("SoundInformation", "Sound", new { SoundName = item.SoundName }, FormMethod.Post, new { enctype = "multipart/form-data", id = "Test" }))
+                {
+                    <tr>
+                        <td>
+                            @{ 
+                                string image = "/Image/SoundImage/" + item.Image;
+                            }
+                            <img class="" style="width:150px;height:150px;border:1px solid black;margin:2vh;border-radius:10%" src=@image alt="" />
+                        </td>
+                        <td>
+                            <p style="margin-top:5vh;width:40vh">@item.SoundName</p>
+                            @foreach (var genres in item.genres)
+                            {
+                                <p>@genres.genreName</p>
+                            }
+                            <span>Автор: </span> <p>@item.Author</p>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-info">Больше информации</button>
+
+                           @{
+                               string name = "/Sound/"+item.SoundName;
+                                   }
+                            <audio style="margin-top:10vh" controls>
+                                <source src=@name type="audio/mp3">
+                            </audio>
+
+                        </td>
+
+
+
+
+
+                    </tr>
+                }
+            }
+        }
+
+    </tbody>
+</table>
+
+

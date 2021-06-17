@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Music Portal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="~/LoginAndCreateAccount/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/LoginAndCreateAccount/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/LoginAndCreateAccount/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/animsition/js/animsition.min.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/select2/select2.min.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="~/LoginAndCreateAccount/vendor/countdowntime/countdowntime.js"></script>
+    <script src="~/LoginAndCreateAccount/js/main.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: fixed;z-index: 9999;width: 100%;margin-top:-10vh">
+        <a href="@Url.Action("index","Home")" style="width: 7vh;height: 7vh;"> <img src="~/Image/Icon/HellBoy.png" alt="" style="width: 7vh;height: 7vh;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @Html.ActionLink("Все композиции", "ShowSound", "Home", new { parentPartId = "AllSound" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Жанры", "MainIndex", "Sound", new { parentPartId = "Genre" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Исполнители", "MainIndex", "Sound", new { parentPartId = "Author" }, new { @class = "nav-link" })
+                </li>
+
+
+            </ul>
+        </div>
+        <ul class="navbar-nav" style="float:right">
+
+            <li class="nav-item">
+                @if (Session["UserNickname"] != null)
+                {
+                    @Html.ActionLink(@Session["UserNickname"].ToString(), "Profile", "User",null, new { @class = "nav-link" })
+
+                }
+
+            </li>
+            <li class="nav-item">
+                @if (Session["UserNickname"] == null)
+                {
+                    @Html.ActionLink("Регистрация/Вход", "Registration", "User", null, new { @class = "nav-link" })
+                }
+                else
+                {
+                    @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })
+                }
+
+            </li>
+        </ul>
+
+    </nav>
+    <div class="container body-content" style="margin-top:10vh">
+        @RenderBody()
+
+        <footer></footer>
+    </div>
+
+</body>
+
+
+</html>
